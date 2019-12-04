@@ -9,8 +9,6 @@ services:
     restart: unless-stopped
     volumes:
       - data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: docker
 
 volumes:
   data:

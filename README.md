@@ -1,6 +1,6 @@
 # postgres-madlib
 
-This image provides a postgres database (11.5) with the extension [MADlib](https://madlib.apache.org/) installed. The instance contains a table 'admission' with data of the following dataset: [Graduate Admission](https://www.kaggle.com/mohansacharya/graduate-admissions).
+This image provides a postgres database (11.5) with the extension [MADlib](https://madlib.apache.org/) installed. The instance contains preloaded datasets.
 
 Automated builds are available on [dockerhub](https://hub.docker.com/repository/docker/jonixis/postgres-madlib)
 
@@ -27,8 +27,6 @@ services:
     restart: unless-stopped
     volumes:
       - data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: docker
 
 volumes:
   data:
@@ -43,8 +41,7 @@ Connect to postgres from the host with e.g. [pgcli](https://www.pgcli.com/).
 ```sh
 pgcli -h localhost -U postgres -d postgres
 ```
-Password: ```docker```
-A
+
 ## Data
 
 The dataset is automatically loaded on the first startup of the container. The database is persisted in a [docker volume](https://docs.docker.com/storage/volumes/). Therefore, it lives on even if the container is deleted. If you want to reset the database simply remove container, delete volume and start container again:
@@ -100,3 +97,5 @@ MADlib Documentation for Logistic Regression: https://madlib.apache.org/docs/lat
 -----
 
 Source dataset `admission_table.csv`: https://www.kaggle.com/mohansacharya/graduate-admissions
+
+Source dataset `rhc.csv`: http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets
